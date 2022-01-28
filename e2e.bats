@@ -1,7 +1,7 @@
 #!/usr/bin/env bats
 
 @test "accept because not a NodePort service" {
-  run kwctl run -e opa policy.wasm -r test_data/service-clusterip.json 
+  run kwctl run -e opa annotated-policy.wasm -r test_data/service-clusterip.json
 
   # this prints the output when one the checks below fails
   echo "output = ${output}"
@@ -12,7 +12,7 @@
 }
 
 @test "reject because NodePort services are not allowed" {
-  run kwctl run -e opa policy.wasm -r test_data/service_nodeport.json
+  run kwctl run -e opa annotated-policy.wasm -r test_data/service_nodeport.json
 
   # this prints the output when one the checks below fails
   echo "output = ${output}"
