@@ -56,10 +56,10 @@ make e2e-tests
 
 ## Automation
 
-This project contains a [GitHub Actions](https://docs.github.com/en/actions)
-called `ci.yml` .
+This project contains [GitHub Actions](https://docs.github.com/en/actions)
+workflows.
 
-The action takes care of the following automations:
+They take care of the following automations:
 
   * Execute the Rego test suite
   * Build the Rego files into a single WebAssembly module
