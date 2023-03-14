@@ -25,6 +25,6 @@ jobs:
 
     uses: kubewarden/github-actions/.github/workflows/reusable-release-policy-rego.yml@v2
     with:
-      oci-target: #TODO: change to something like ghcr.io/${{ github.repository_owner }}/policies/disallow-service-loadbalancer
+      oci-target: #TODO: change to something like ghcr.io/${{ github.repository_owner }}/policies/policy-name
     secrets:
       workflow-pat: ${{ secrets.WORKFLOW_PAT }}
