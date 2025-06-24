@@ -31,6 +31,31 @@ a `deny` object that is later embedded into an `AdmissionReview` response.
 The `AdmissionReview` object is defined inside of the `utility/policy.rego` file.
 You probably won't need to change this file.
 
+## Rego Policy code and OPA v1.0.0 compatibility
+
+With the release of OPA (Open Policy Agent)
+[v1.0.0](https://github.com/open-policy-agent/opa/releases/tag/v1.0.0) in
+December 2024, a breaking change was introduced regarding Rego policy syntax.
+
+Previously, `if` for all rule definitions and `contains` for multi-value rules
+were optional; now, they're mandatory. This change affects most older policies.
+
+Here's a summary of what you need to know:
+
+- OPA v1.0.0 Syntax: OPA v1.0.0 mandates the use of `if` for all rule
+  definitions and `contains` for multi-value rules. Policies not adhering to this
+  syntax will break.
+- Backward Compatibility: If you need to build older policies that don't use
+  the new v1.0.0 syntax, you must provide the `--v0-compatible` flag to the `opa
+build` command.
+
+What this means for you:
+
+- If your Rego policy follow the `v0` syntax. You must build the policy using
+  the `OPA_V0_COMPATIBLE=true make` command.
+- If your Rego policy follow `v1` syntax, you must build the
+  policy without any environment variable set.
+
 ## Testing
 
 The policy has some unit tests written using Rego, they can be found inside of
