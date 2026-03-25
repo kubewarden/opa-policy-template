@@ -3,4 +3,10 @@ name: Continuous integration
 jobs:
   test:
     name: run tests and linters
-    uses: kubewarden/github-actions/.github/workflows/reusable-test-policy-rego.yml@a03315e95ccf85c92e5d472824edeab0704f857b # v4.6.1
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@de0fac2e4500dabe0009e67214ff5f5447ce83dd # v6.0.2
+      - name: Install opa
+        uses: kubewarden/github-actions/opa-installer@a03315e95ccf85c92e5d472824edeab0704f857b # v4.6.1
+      - name: Run unit tests
+        run: make test
